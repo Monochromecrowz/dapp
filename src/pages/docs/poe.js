@@ -5,7 +5,7 @@ import Layout from "../../components/layout";
 export default function PoE() {
   return (
     <Layout>
-      <div className="container">
+      <div className="no-left-margins">
         <div className="text">
           Crowz uses a novel consensus algorithm called proof-of-encryption. Anybody who has participated in a proposal
           can encrypt the access message for newcomers. As a reward, they earn 5% of the collected funds for encrypting

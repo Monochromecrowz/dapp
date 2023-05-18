@@ -7,7 +7,7 @@ import Chart from "../../assets/donut-chart.svg";
 export default function PoE() {
   return (
     <Layout>
-      <div className="container">
+      <div className="no-left-margins">
         <div className="row">
           <div className="col-8">
             <div className="text">
@@ -24,29 +24,10 @@ export default function PoE() {
               <br />
               <br />
               This reduction in supply, coupled with the constant demand for the token due to its use in the platform,
-              leads to an increase in the token's value over time. Crowz uses a novel consensus algorithm called
-              proof-of-encryption. Anybody who has participated in a proposal can encrypt the access message for
-              newcomers. As a reward, they earn 5% of the collected funds for encrypting the message.
-              <br />
-              <br />
-              The outcome of this innovative approach is a truly decentralized ecosystem, which functions autonomously
-              and does not rely on centralized servers or a single originator to sustain its operation.
+              leads to an increase in the token's value over time.
             </div>
           </div>
-          <div className="col-4">
-            <Image src={Chart} alt="CROWZ" width="400" height="400" />
-            <div className="text" style={{ textAlign: "center" }}>
-              Team: 12%
-              <br />
-              Strategic: 12%
-              <br />
-              Treasury: 16%
-              <br />
-              Liquidity: 60%
-            </div>
-            <br />
-            <br />
-          </div>
+        
         </div>
       </div>
     </Layout>

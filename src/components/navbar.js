@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from "react";
 import { pages } from "../shared/constants";
+import Image from "next/image";
+import Logo from "../assets/crowz_logo.png";
 
 export default function NavBar() {
   const [menuSelection, setMenuSelection] = useState(pages.homepage);
@@ -15,7 +17,7 @@ export default function NavBar() {
 
     for (const key in pages) {
       const item = pages[key];
-     
+
       if (item.url === url) {
         page = item;
       }
@@ -47,51 +49,48 @@ export default function NavBar() {
   };
 
   return (
-    <>
-      <div className="container-fluid h-100 d-flex flex-column">
-        <div className="row h-100">
-          <div className={"col-auto" + (hasSubMenu ? " main-border-right" : "")}>
-            {Object.values(pages).map((item) => {
-              const { id, title, url } = item;
-              const isSelected = menuSelection.id === id;
-              return (
-                <a
-                  key={id}
-                  className={`button ${isSelected ? "selected" : ""}`}
-                  id={id}
-                  onClick={() => {
-                    goToPage(item);
-                  }}
-                  href={url}
-                >
-                  {title}
-                </a>
-              );
-            })}
-          </div>
-          {hasSubMenu && (
-            <div className="col-auto">
-              {Object.values(menuSelection.subpages).map((item) => {
-                const { id, title, url } = item;
-                const isSelected = subMenuSelection && subMenuSelection.id === id;
-                return (
-                  <a
-                    key={id}
-                    className={`button ${isSelected ? "selected" : ""}`}
-                    id={id}
-                    onClick={() => {
-                      goToPage(item);
-                    }}
-                    href={url}
-                  >
-                    {title}
-                  </a>
-                );
-              })}
-            </div>
-          )}
-        </div>
+    <div style={{ display: "flex", justifyContent: "center" }}>
+      <div className={"col" + (hasSubMenu ? " column main-border-right" : "")}>
+        {Object.values(pages).map((item) => {
+          const { id, title, url } = item;
+          const isSelected = menuSelection.id === id;
+          return (
+            <a
+              key={id}
+              className={`main-menu-item button ${isSelected ? "selected" : ""}`}
+              id={id}
+              onClick={() => {
+                goToPage(item);
+              }}
+              href={url}
+            >
+              {title}
+            </a>
+          );
+        })}
       </div>
-    </>
+      <Image src={Logo} alt="CROWZ" align-items="center" className="logo img-responsive" />
+      {hasSubMenu && (
+        <div className="col main-menu" style={{ marginRight: "-8px" }}>
+          {Object.values(menuSelection.subpages).map((item) => {
+            const { id, title, url } = item;
+            const isSelected = subMenuSelection && subMenuSelection.id === id;
+            return (
+              <a
+                key={id}
+                className={`main-menu-item button ${isSelected ? "selected" : ""}`}
+                id={id}
+                onClick={() => {
+                  goToPage(item);
+                }}
+                href={url}
+              >
+                {title}
+              </a>
+            );
+          })}
+        </div>
+      )}
+    </div>
   );
 }

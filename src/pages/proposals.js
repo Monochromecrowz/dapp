@@ -22,59 +22,50 @@ export default function Proposals() {
 
   return (
     <Layout>
-      <div className="container-fluid">
-        <div className="row h-100">
-          <div className="col-3 main-border-right">
-            {proposals.map((proposal) => (
-              <>
-                <div
-                  key={proposal.id}
-                  className={`text button ${
-                    selectedProposal && selectedProposal.id === proposal.id ? "selected bold" : ""
-                  }`}
-                  id={proposal.id}
-                  onClick={() => {
-                    setSelectedProposal(proposal);
-                  }}
-                >
-                  {proposal.title}
-                </div>
-                <div className="bordered-separator" />
-              </>
-            ))}
+      <div className="row h-100">
+        <div className="col-auto main-border-right main-menu">
+          {proposals.map((proposal) => (
+            <>
+              <div
+                key={proposal.id}
+                className={`text button ${selectedProposal && selectedProposal.id === proposal.id ? "selected" : ""}`}
+                id={proposal.id}
+                onClick={() => {
+                  setSelectedProposal(proposal);
+                }}
+              >
+                {proposal.title}
+              </div>
+            </>
+          ))}
+        </div>
+        <div className="col-auto main-border-right-dashed main-menu column">
+          <div className="text">
+            <b>Crow Lead</b>:
           </div>
-          <div className="col-3 main-border-right">
-            <div className="text">
-              <b>Title</b>:
-            </div>
-            <div className="text">{selectedProposal?.title}</div>
-            <div className="small-separator" />
-            <div className="text">
-              <b>Collected</b>:
-            </div>
-            <div className="text">
-              {selectedProposal?.collected} / {selectedProposal?.goal} USD
-            </div>
-            <div className="small-separator" />
-            <div className="text">
-              <b>Minimum Contribution</b>:
-            </div>
-            <div className="text">{selectedProposal?.minimumContribution} USD</div>
-            <div className="small-separator" />
-            <div className="text">
+          <div className="text">{selectedProposal?.lead}</div>
+          <div className="small-separator" />
+          <div className="text">
+            <b>Target</b>:
+          </div>
+          <div className="text">{selectedProposal?.goal} USD</div>
+          <div className="small-separator" />
+          <div className="text">
+            <b>Minimum Contribution</b>:
+          </div>
+          <div className="text">{selectedProposal?.minimumContribution} USD</div>
+          <div className="small-separator" />
+          {/* <div className="text">
               <b>Link</b>:
             </div>
             <div className="text">{selectedProposal?.link}</div>
             <div className="small-separator" />
             <button>
               <u>&lt;contribute&gt;</u>
-            </button>
-          </div>
-          <div className="col-6 main-border-right">
-            <div className="text-with-breaks">
-                {selectedProposal?.description}
-            </div>
-          </div>
+            </button> */}
+        </div>
+        <div className="col">
+          <div className="text-with-breaks">{selectedProposal?.description}</div>
         </div>
       </div>
     </Layout>

@@ -336,7 +336,7 @@ a.mailOSV:visited {
 /*CONTAINERS*/
 .buttons-container {
   padding: 0 0.5vw 0 0.5vw;
-  width: 12vw;
+  width: 10vw;
   color: rgb(237, 237, 237);
   display: flex;
   flex-direction: column;
@@ -441,6 +441,7 @@ img {
 .button:hover,
 a:hover {
   border-bottom: 2px black dotted;
+  color: white;
 }
 
 .button:hover::after {
@@ -520,6 +521,7 @@ a:hover {
 
   .button {
     border-bottom: none;
+    width: 11vw;
   }
 
   .rows {
@@ -710,11 +712,7 @@ a:hover {
 
 .main-menu {
   padding: 0 0.5vw 0 0.5vw;
-  width: 12vw;
-  color: rgb(237, 237, 237);
-  display: flex;
-  flex-direction: column;
-  height: 100%;
+  min-width: 12vw;
 }
 
 .text {
@@ -730,10 +728,26 @@ a:hover {
   white-space: pre-line;
 }
 
+.column {
+  width: 12vw !important;
+}
+
 .main-border-right {
   border-right: black;
-  border-right-width: 4px;
+  border-right-width: 2px;
   border-right-style: solid;
+}
+
+.main-border-right-dashed {
+  border-right: black;
+  border-right-width: 2px;
+  border-right-style: dashed;
+}
+
+.main-border-left {
+  border-left: black;
+  border-left-width: 2px;
+  border-left-style: solid;
 }
 
 .overflow-y {
@@ -746,11 +760,31 @@ a:hover {
 }
 
 .bordered-separator {
-  border-bottom: 1px solid white;
   width: 100%;
   height: 1.5vh;
 }
 
 .bold {
   font-weight: bold;
+}
+
+.logo {
+  position: absolute;
+  bottom: 0;
+  width: 12vw;
+  height: auto;
+  max-width: 150px;
+}
+
+.row > .main-menu {
+  padding: 0 0.5vw 0 0.5vw;
+}
+
+a.main-menu-item {
+  width: 11vw;
+}
+
+.no-left-margins {
+  margin-left: 0;
+  padding-left: 0;
 }

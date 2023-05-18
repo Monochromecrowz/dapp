@@ -5,7 +5,7 @@ import Layout from "../../components/layout";
 export default function HowItWorks() {
   return (
     <Layout>
-      <div className="container">
+      <div className="no-left-margins">
         <div className="row">
           <div className="col-auto">
             <div className="text">
