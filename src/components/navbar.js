@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { pages } from "../shared/constants";
 import Image from "next/image";
 import Logo from "../assets/crowz_logo.png";
+import Link from "next/link";
 
 export default function NavBar() {
   const [menuSelection, setMenuSelection] = useState(pages.homepage);
@@ -44,49 +45,31 @@ export default function NavBar() {
     setHasSubMenu(menuSelection.subpages.length > 0 || menuSelection.isSubpage);
   }, [menuSelection]);
 
-  const goToPage = (page) => {
-    window.location.href = page.url;
-  };
-
   return (
     <div style={{ display: "flex", justifyContent: "center" }}>
-      <div className={"col" + (hasSubMenu ? " column main-border-right" : "")}>
-        {Object.values(pages).map((item) => {
-          const { id, title, url } = item;
-          const isSelected = menuSelection.id === id;
-          return (
-            <a
-              key={id}
-              className={`main-menu-item button ${isSelected ? "selected" : ""}`}
-              id={id}
-              onClick={() => {
-                goToPage(item);
-              }}
-              href={url}
-            >
-              {title}
-            </a>
-          );
-        })}
+      <div style={{ display: "flex", justifyContent: "center" }}>
+        <div className={"col" + (hasSubMenu ? " column main-border-right" : "")}>
+          {Object.values(pages).map((item) => {
+            const { id, title, url } = item;
+            const isSelected = menuSelection.id === id;
+            return (
+              <Link key={id} className={`main-menu-item button ${isSelected ? "selected" : ""}`} id={id} href={url}>
+                {title}
+              </Link>
+            );
+          })}
+        </div>
+        <Image src={Logo} alt="CROWZ" align-items="center" className="logo img-responsive" />
       </div>
-      <Image src={Logo} alt="CROWZ" align-items="center" className="logo img-responsive" />
       {hasSubMenu && (
         <div className="col main-menu" style={{ marginRight: "-8px" }}>
           {Object.values(menuSelection.subpages).map((item) => {
             const { id, title, url } = item;
             const isSelected = subMenuSelection && subMenuSelection.id === id;
             return (
-              <a
-                key={id}
-                className={`main-menu-item button ${isSelected ? "selected" : ""}`}
-                id={id}
-                onClick={() => {
-                  goToPage(item);
-                }}
-                href={url}
-              >
+              <Link key={id} className={`main-menu-item button ${isSelected ? "selected" : ""}`} id={id} href={url}>
                 {title}
-              </a>
+              </Link>
             );
           })}
         </div>
